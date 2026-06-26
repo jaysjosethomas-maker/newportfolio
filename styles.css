@@ -179,6 +179,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: auto;
     margin-right: auto;
 }
+.text-blue {
+    color: var(--accent-blue) !important;
+}
+.section-header.text-center {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* Buttons */
 .btn {
@@ -245,6 +252,13 @@ h1, h2, h3, h4, h5, h6 {
     width: 1.2rem;
     height: 1.2rem;
     transition: transform 0.2s;
+}
+.inline-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.35rem;
+    width: 1rem;
+    height: 1rem;
 }
 .btn:hover .btn-icon {
     transform: translateY(2px);
@@ -376,9 +390,11 @@ body.light-theme .mobile-toggle .bar {
 
 /* Hero Section */
 .hero-section {
+    position: relative;
     background-color: var(--bg-navy-dark);
     padding-top: 8rem;
     z-index: 1;
+    overflow: hidden;
 }
 
 #particles-canvas {
@@ -682,6 +698,8 @@ body.light-theme .mobile-toggle .bar {
 }
 
 .stat-card {
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 2.5rem 2rem;
@@ -705,13 +723,14 @@ body.light-theme .mobile-toggle .bar {
 .stat-label {
     font-size: 0.875rem;
     color: var(--text-grey);
+    margin-bottom: 1.5rem;
 }
 
 .stat-progress {
     width: 100%;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.05);
-    margin-top: 1.5rem;
+    margin-top: auto;
 }
 .progress-bar {
     height: 100%;
@@ -896,39 +915,57 @@ body.light-theme .mobile-toggle .bar {
 
 .growth-graph {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-end;
-    height: 200px;
+    gap: 5rem;
+    height: 220px;
+    margin: 2rem auto;
 }
 
 .graph-bar-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    height: 100%;
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 180px;
+    width: 120px;
+}
+
+.bar-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
 }
 
 .graph-bar {
-    width: 60px;
+    width: 45px;
     border-radius: 4px 4px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 600;
-    transition: var(--transition-slow);
-}
-.graph-bar span {
-    transform: rotate(-90deg);
+    transition: height 1s ease-in-out;
 }
 
 .bar-start {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
 }
+
 .bar-end {
     background-color: var(--accent-blue);
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+.bar-title {
+    font-size: 0.85rem;
+    color: var(--text-grey);
+    margin-top: 0.75rem;
+    font-weight: 500;
 }
 
 .billing-flow {
@@ -1611,17 +1648,20 @@ body.light-theme .mobile-toggle .bar {
     font-family: var(--font-heading);
     font-size: 4rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.01);
+    color: rgba(255, 255, 255, 0.03);
     position: absolute;
     top: -1rem;
     right: 0;
     line-height: 1;
+    z-index: 0;
 }
 
 .think-card h4 {
     font-size: 1.15rem;
     margin-bottom: 0.75rem;
     line-height: 1.3;
+    min-height: 4.5rem;
+    padding-right: 3.5rem;
 }
 
 .think-card p {
@@ -2072,7 +2112,7 @@ body.light-theme .india-state-path {
 /* Contact Links */
 .contact-links-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 4rem;
 }
@@ -2344,6 +2384,9 @@ body.light-theme .india-state-path {
     }
     .how-i-think-grid {
         grid-template-columns: 1fr;
+    }
+    .think-card h4 {
+        min-height: auto;
     }
     .avengers-grid {
         grid-template-columns: 1fr;
